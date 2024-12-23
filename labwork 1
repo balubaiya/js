@@ -1,0 +1,17 @@
+function sayHello() {
+  const message = "Hello, World!"; 
+  console.log(message); 
+}
+sayHello();
+
+const a = 10;
+const b = 20;
+
+// Arithmetic
+console.log(a + b);
+
+// Comparison
+console.log(a > b); 
+
+// Logical
+console.log(a < b && b > 15); 

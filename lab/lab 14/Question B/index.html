@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Content Filtering</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .product {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+    }
+    .filters {
+      margin-bottom: 20px;
+    }
+    .filters label {
+      margin-right: 10px;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Product List</h1>
+  <div class="filters">
+    <label for="category-filter">Category:</label>
+    <select id="category-filter">
+      <option value="all">All</option>
+      <option value="electronics">Electronics</option>
+      <option value="clothing">Clothing</option>
+      <option value="home">Home</option>
+    </select>
+
+    <label for="price-filter">Max Price:</label>
+    <input type="number" id="price-filter" placeholder="Enter max price" />
+    <button id="apply-filters">Apply Filters</button>
+  </div>
+
+  <div id="product-list"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

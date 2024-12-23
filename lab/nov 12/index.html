@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Array and DOM Interaction</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+    .result, .current-date {
+      margin: 10px 0;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    button {
+      margin: 5px;
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>JavaScript Array and DOM Interaction</h1>
+
+  <!-- Section for input and sum calculation -->
+  <h2>Sum of Numbers</h2>
+  <label for="numbers">Enter a list of numbers (comma-separated):</label>
+  <input type="text" id="numbers" placeholder="e.g., 1, 2, 3">
+  <button onclick="calculateSum()">Calculate Sum</button>
+  <div class="result" id="sum-result"></div>
+  <div class="current-date" id="current-date"></div>
+
+  <hr>
+
+  <!-- Section for DOM interaction -->
+  <h2>Change Background Color</h2>
+  <button onclick="changeBackgroundColor('lightblue')">Change to Light Blue</button>
+  <button onclick="changeBackgroundColor('lightgreen')">Change to Light Green</button>
+  <button onclick="changeBackgroundColor('white')">Reset</button>
+
+  <hr>
+
+  <!-- Section for Window and Frame Manipulation -->
+  <h2>Window Manipulation</h2>
+  <button onclick="openNewWindow()">Open New Window</button>
+  <button onclick="closeNewWindow()">Close New Window</button>
+
+  <script>
+    // Part 1: Sum Calculation
+    function calculateSum() {
+      const numbersInput = document.getElementById("numbers").value;
+      const numbersArray = numbersInput.split(",").map(num => parseFloat(num.trim()));
+
+      if (numbersArray.some(isNaN)) {
+        alert("Please enter valid numbers separated by commas.");
+        return;
+      }
+
+      let sum = 0;
+      numbersArray.forEach(number => {
+        sum += number;
+      });
+
+      const sumResult = document.getElementById("sum-result");
+      sumResult.textContent = `Sum of numbers: ${sum}`;
+
+      const currentDate = document.getElementById("current-date");
+      currentDate.textContent = `Calculation completed on: ${new Date().toLocaleString()}`;
+    }
+
+    // Part 2: DOM Background Color Change
+    function changeBackgroundColor(color) {
+      document.body.style.backgroundColor = color;
+    }
+
+    // Part 3: Window Manipulation
+    let newWindow = null;
+
+    function openNewWindow() {
+      if (newWindow && !newWindow.closed) {
+        alert("A new window is already open.");
+      } else {
+        newWindow = window.open("", "NewWindow", "width=400,height=300");
+        newWindow.document.write(`
+          <html>
+          <head><title>New Window</title></head>
+          <body>
+            <h1>Welcome to the New Window</h1>
+            <button onclick="window.close()">Close This Window</button>
+          </body>
+          </html>
+        `);
+      }
+    }
+
+    function closeNewWindow() {
+      if (newWindow && !newWindow.closed) {
+        newWindow.close();
+      } else {
+        alert("No open window to close.");
+      }
+    }
+  </script>
+</body>
+</html>
